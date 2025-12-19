@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Настройки{% endblock %}
+
+{% block main_content %}
+<div class="main-container">
+    <div class="sidebar">
+        <a href="{{ url_for('inbox') }}">Входящие</a>
+        <a href="{{ url_for('compose') }}">Написать письмо</a>
+    </div>
+    <div class="content">
+        <h2>Настройки</h2>
+        {% if message %}<p style="color: green;">{{ message }}</p>{% endif %}
+        <form method="POST" action="{{ url_for('save_settings') }}">
+            <h4>Подпись (добавляется в конец каждого письма):</h4>
+            <textarea name="signature" rows="4">{{ settings['signature'] or '' }}</textarea>
+
+            <h4>Настройки внешнего почтового ящика (для отправки/получения внешних писем):</h4>
+            <p>Важно: Используйте пароли приложений/токены, а не основной пароль.</p>
+            <label for="external_login">Email внешнего ящика:</label>
+            <input type="email" id="external_login" name="external_login" value="{{ settings['external_login'] or '' }}" placeholder="Ваш Gmail/Yandex">
+            
+            <label for="external_password">Пароль приложения/Токен:</label>
+            <input type="password" id="external_password" name="external_password" placeholder="Введите новый пароль для сохранения">
+
+            <button type="submit">Сохранить настройки</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

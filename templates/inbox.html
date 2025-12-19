@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ folder_name }}{% endblock %}
+
+{% block main_content %}
+<div class="main-container">
+    <div class="sidebar">
+        <a href="{{ url_for('compose') }}">Написать письмо</a>
+        <a href="{{ url_for('inbox') }}">Входящие ({% if messages %}{{ messages | length }}{% else %}0{% endif %})</a>
+        <a href="{{ url_for('sent') }}">Отправленные</a>
+        <a href="{{ url_for('drafts') }}">Черновики ({% if draft_count %}{{ draft_count }}{% else %}0{% endif %})</a>
+    </div>
+    <div class="content">
+        <h2>{{ folder_name }}</h2>
+        <div class="message-list">
+            {% for msg in messages %}
+            <a href="{{ url_for('read_message', folder_name=folder_code, message_id=msg['id']) }}" class="{% if not msg.get('read', True) %}unread{% endif %}">
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="font-weight: bold;">
+                        {% if folder_name == "Отправленные" %}
+                            Кому: {{ msg['recipient'] }}
+                        {% else %}
+                            От: {{ msg['sender'] }}
+                        {% endif %}
+                    </div>
+                    <div>{{ msg['date'] }}</div>
+                </div>
+                <div style="color: #555;">Тема: {{ msg['subject'] }}</div>
+            </a>
+            {% endfor %}
+            {% if not messages %}
+                <p style="padding: 10px;">В этой папке нет сообщений.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

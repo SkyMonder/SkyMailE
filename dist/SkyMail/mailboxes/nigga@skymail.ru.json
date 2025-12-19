@@ -1,0 +1,30 @@
+{
+    "inbox": [
+        {
+            "from": "skymonder@skymail.ru",
+            "to": "Nigga@skymail.ru",
+            "subject": "Сообщение для скачивания самой лучшей почты в миреeee",
+            "text": "eeeeee"
+        },
+        {
+            "from": "skymonder@skymail.ru",
+            "to": "Nigga@skymail.ru",
+            "subject": "sr",
+            "text": "rdrx"
+        }
+    ],
+    "sent": [
+        {
+            "from": "nigga@skymail.ru",
+            "to": "skymonder@skymail.ru",
+            "subject": "Сообщение из самой лучшей почты в мире",
+            "text": "dddd"
+        },
+        {
+            "from": "nigga@skymail.ru",
+            "to": "skymonder@skymail.ru",
+            "subject": "eh",
+            "text": "egg"
+        }
+    ]
+}

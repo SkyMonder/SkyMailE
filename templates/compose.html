@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Написать письмо{% endblock %}
+
+{% block main_content %}
+<div class="main-container">
+    <div class="sidebar">
+        <a href="{{ url_for('inbox') }}">Входящие</a>
+        <a href="{{ url_for('settings') }}">Настройки</a>
+    </div>
+    <div class="content">
+        <h2>Написать письмо</h2>
+        <form method="POST" action="{{ url_for('handle_send') }}">
+            <label for="recipient">Кому:</label>
+            <input type="email" id="recipient" name="recipient" placeholder="Получатель (user@skymail.ru или внешний)" required value="{{ draft.get('recipient', '') if draft }}">
+
+            <label for="subject">Тема:</label>
+            <input type="text" id="subject" name="subject" placeholder="Тема письма" value="{{ draft.get('subject', '') if draft }}">
+
+            <label for="body">Текст:</label>
+            <textarea id="body" name="body" rows="15" placeholder="Текст письма" required>{{ draft.get('body', '') if draft }}</textarea>
+
+            <input type="hidden" name="draft_id" value="{{ draft.get('id', '') if draft }}">
+
+            <button type="submit" name="action" value="send">Отправить</button>
+            <button type="submit" name="action" value="draft" style="background-color: #6c757d;">Сохранить черновик</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

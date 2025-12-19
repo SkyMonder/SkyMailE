@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block main_content %}
+<div class="content" style="max-width: 400px; margin: 50px auto;">
+    <h2>Вход/Регистрация</h2>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    
+    <h3>Вход</h3>
+    <form method="POST" action="{{ url_for('index') }}">
+        <input type="hidden" name="action" value="login">
+        <input type="email" name="email" placeholder="Email (например, user@skymail.ru)" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+    </form>
+
+    <h3>Регистрация</h3>
+    <form method="POST" action="{{ url_for('index') }}">
+        <input type="hidden" name="action" value="register">
+        <input type="email" name="email" placeholder="Email (например, newuser@skymail.ru)" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+</div>
+{% endblock %}

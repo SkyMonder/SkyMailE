@@ -1,0 +1,11 @@
+{
+    "inbox": [],
+    "sent": [
+        {
+            "from": "test101@skymail.ru",
+            "to": "SkyMonder@skymail.ru",
+            "subject": "ser",
+            "text": "тестик"
+        }
+    ]
+}
